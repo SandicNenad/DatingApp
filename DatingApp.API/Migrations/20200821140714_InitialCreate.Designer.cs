@@ -26,7 +26,7 @@ namespace DatingApp.API.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Origin")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
