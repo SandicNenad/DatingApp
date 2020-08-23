@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-value',
   templateUrl: './value.component.html',
-  styleUrls: ['./value.component.scss']
+  styleUrls: ['./value.component.css']
 })
 export class ValueComponent implements OnInit {
   values: any;
@@ -18,8 +18,8 @@ export class ValueComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   getValues(){
-    this.http.get('http://localhost:5000/api/values').subscribe(response => {
-      this.values = response;
+    this.http.get('http://localhost:5000/api/values').subscribe(response =>{
+      this.values=response;
     }, error => {
       console.log(error);
     });
