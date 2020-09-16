@@ -23,4 +23,9 @@ login(model: any){
     );
 }
 
+// tslint:disable-next-line: typedef
+register(model: any){
+  return this.http.post(this.baseUrl + 'register', model);
+}
+
 }
