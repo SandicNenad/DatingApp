@@ -10,7 +10,7 @@ import { AlertifyService } from '../_services/alertify.service';
 export class NavComponent implements OnInit {
   model: any = {};
 
-  constructor(private authService: AuthService, private alertify: AlertifyService) { }
+  constructor(public authService: AuthService, private alertify: AlertifyService) { }
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
@@ -27,8 +27,9 @@ export class NavComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   loggedIn(){
-    const token = localStorage.getItem('token');
-    return !! token;
+    // const token = localStorage.getItem('token');
+    // return !! token;
+    return this.authService.loggedIn();
   }
 
   // tslint:disable-next-line: typedef
