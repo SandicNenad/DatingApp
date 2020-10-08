@@ -12,7 +12,7 @@ export class AuthService {
   decodedToken: any;
 
 constructor(private http: HttpClient) { }
-
+// temp comment just for end of section 6
 // tslint:disable-next-line: typedef
 login(model: any){
   return this.http.post(this.baseUrl + 'login', model)
