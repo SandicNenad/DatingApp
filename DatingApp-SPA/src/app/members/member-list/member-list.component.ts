@@ -17,7 +17,6 @@ export class MemberListComponent implements OnInit {
   // tslint:disable-next-line: typedef
   ngOnInit() {
     this.route.data.subscribe(data => {
-      // tslint:disable-next-line: no-string-literal
       this.users = data['users'];
     });
   }
