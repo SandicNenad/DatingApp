@@ -15,10 +15,12 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
 
+// tslint:disable-next-line: typedef
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -32,7 +34,8 @@ export function tokenGetter() {
       MemberListComponent,
       ListsComponent,
       MessagesComponent,
-      MemberCardComponent
+      MemberCardComponent,
+      MemberDetailComponent
    ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ export function tokenGetter() {
     RouterModule.forRoot(appRoutes),
     JwtModule.forRoot({
       config: {
+        // tslint:disable-next-line: object-literal-shorthand
         tokenGetter: tokenGetter,
         allowedDomains: ['localhost:5000'],
         disallowedRoutes: ['localhost:5000/api/auth']
