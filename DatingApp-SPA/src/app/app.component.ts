@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
 
   constructor(private authService: AuthService) {}
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     const token = localStorage.getItem('token');
     if (token) {
