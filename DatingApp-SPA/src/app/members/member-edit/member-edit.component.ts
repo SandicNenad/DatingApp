@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/user';
 import { AlertifyService } from 'src/app/_services/alertify.service';
+import { AuthService } from 'src/app/_services/auth.service';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-member-edit',
@@ -13,13 +15,15 @@ export class MemberEditComponent implements OnInit {
   @ViewChild('editForm', {static: true}) editForm: NgForm;
   user: User;
   @HostListener('window:beforeunload', ['$event'])
+  // tslint:disable-next-line: typedef
   unloadNotification($event: any){
     if (this.editForm.dirty) {
       $event.returnValue = true;
     }
-  }  
+  }
 
-  constructor(private route: ActivatedRoute, private alertify: AlertifyService) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private route: ActivatedRoute, private alertify: AlertifyService, private userService: UserService, private authService: AuthService) { }
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
@@ -30,9 +34,13 @@ export class MemberEditComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   updateUser() {
-    console.log(this.user);
-    this.alertify.success('Profile update successfully');
-    this.editForm.reset(this.user);
+    this.userService.updateUser(this.authService.decodedToken.nameid, this.user).subscribe(next => {
+      this.alertify.success('Profile update successfully');
+      this.editForm.reset(this.user);
+    }, error => {
+      this.alertify.error(error);
+    });
+
   }
 
 }
