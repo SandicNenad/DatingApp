@@ -42,5 +42,5 @@ export class MemberEditComponent implements OnInit {
     });
 
   }
-// where to store photos db vs file system vs cloud
+
 }
