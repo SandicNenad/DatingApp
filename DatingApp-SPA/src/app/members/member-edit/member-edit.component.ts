@@ -31,7 +31,7 @@ export class MemberEditComponent implements OnInit {
       this.user = data['user'];
     });
   }
-
+  // temp comment for commiting end of module 10
   // tslint:disable-next-line: typedef
   updateUser() {
     this.userService.updateUser(this.authService.decodedToken.nameid, this.user).subscribe(next => {
