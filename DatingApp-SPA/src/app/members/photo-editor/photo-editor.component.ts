@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/_services/auth.service';
   styleUrls: ['./photo-editor.component.scss']
 })
 export class PhotoEditorComponent implements OnInit {
-  @Input() photo: Photo[];
+  @Input() photos: Photo[];
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
   response: string;
@@ -74,7 +74,7 @@ export class PhotoEditorComponent implements OnInit {
           description: res.description,
           isMain: res.isMain
         };
-        this.photo.push(photo);
+        this.photos.push(photo);
       }
     };
   }
