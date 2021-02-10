@@ -34,5 +34,5 @@ setMainPhoto(userId: number, id: number) {
 deletePhoto(userId: number, photoId: number) {
   return this.http.delete(this.baseUrl + 'users/' + userId + '/photos/' + photoId);
 }
-
+// comment for end of section commit
 }
