@@ -43,7 +43,7 @@ export class PhotoEditorComponent implements OnInit {
       maxFileSize: 10 * 1024 * 1024
     });
 
-    this.uploader.onAfterAddingFile = (file) => {file.withCredentials = false; };
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       if (response) {
@@ -74,5 +74,17 @@ export class PhotoEditorComponent implements OnInit {
       this.alertify.error(error);
     }
     );
+  }
+
+  // tslint:disable-next-line: typedef
+  deletePhoto(photoId: number) {
+    this.alertify.confirm('Are you sure you want to delete this photo?', () => {
+      this.userService.deletePhoto(this.authService.decodedToken.nameid, photoId).subscribe(() => {
+        this.photos.splice(this.photos.findIndex(p => p.id === photoId), 1);
+        this.alertify.success('Photo has been deleted');
+      }, error => {
+        this.alertify.error('Failed to delete the photo');
+      });
+    });
   }
 }
