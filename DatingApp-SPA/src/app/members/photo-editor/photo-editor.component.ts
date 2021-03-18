@@ -64,7 +64,7 @@ export class PhotoEditorComponent implements OnInit {
       }
     };
   }
-
+// comment for end of section commit
   // tslint:disable-next-line: typedef
   setMainPhoto(photo: Photo) {
     this.userService.setMainPhoto(this.authService.decodedToken.nameid, photo.id).subscribe(() => {
