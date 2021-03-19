@@ -58,6 +58,7 @@ namespace DatingApp.API
                         ValidateAudience = false
                     };
                 });
+            services.AddScoped<LogUserActivity>();
             // services.AddCors(allowsites=>{allowsites.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             // });
         }
