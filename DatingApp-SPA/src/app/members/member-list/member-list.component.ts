@@ -1,3 +1,4 @@
+import { JsonpClientBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PaginatedResult, Pagination } from 'src/app/_models/pagination';
@@ -12,6 +13,9 @@ import { UserService } from '../../_services/user.service';
 })
 export class MemberListComponent implements OnInit {
   users: User[];
+  user: User = JSON.parse(localStorage.getItem('user'));
+  genderList = [{value: 'male', display: 'Males'}, {value: 'female', display: 'Females'}];
+  userParams: any = {};
   pagination: Pagination;
 
   constructor(private userService: UserService, private alertify: AlertifyService, private route: ActivatedRoute) { }
@@ -23,6 +27,10 @@ export class MemberListComponent implements OnInit {
       this.users = data['users'].result;
       this.pagination = data['users'].pagination;
     });
+
+    this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
+    this.userParams.minAge = 18;
+    this.userParams.maxAge = 99;
   }
 
   pageChanged(event: any): void {
@@ -32,9 +40,17 @@ export class MemberListComponent implements OnInit {
   }
 
   // tslint:disable-next-line: typedef
+  resetFilters() {
+    this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
+    this.userParams.minAge = 18;
+    this.userParams.maxAge = 99;
+    this.loadUsers();
+  }
+
+  // tslint:disable-next-line: typedef
   loadUsers(){
     // tslint:disable-next-line: deprecation
-    this.userService.getUsers(this.pagination.currentPage, this.pagination.itemsPerPage).subscribe((res: PaginatedResult<User[]>) => {
+    this.userService.getUsers(this.pagination.currentPage, this.pagination.itemsPerPage, this.userParams).subscribe((res: PaginatedResult<User[]>) => {
       this.users = res.result;
       this.pagination = res.pagination;
     }, error => {
