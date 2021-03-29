@@ -23,7 +23,7 @@ getUsers(page?, itemsPerPage?, userParams?): Observable<PaginatedResult<User[]>>
     params = params.append('pageNumber', page);
     params = params.append('pageSize', itemsPerPage);
   }
-
+//commit for end of section
   if (userParams != null) {
     params = params.append('minAge', userParams.minAge);
     params = params.append('maxAge', userParams.maxAge);
