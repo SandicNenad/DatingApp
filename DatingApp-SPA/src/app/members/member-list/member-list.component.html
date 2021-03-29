@@ -27,6 +27,12 @@
     </div>
     <button type="submit" class="btn btn-primary" style="margin-left: 10px">Apply filters</button>
     <button type="button" class="btn btn-info" (click)="resetFilters()" style="margin-left: 10px">Reset filter</button>
+    <div class="col">
+      <button type="button" name="orderBy" class="btn btn-primary"
+      [(ngModel)]="userParams.orderBy" (click)="loadUsers()" btnRadio="lastActive">Last active</button>
+      <button type="button" name="orderBy" class="btn btn-primary"
+      [(ngModel)]="userParams.orderBy" (click)="loadUsers()" btnRadio="created">Newest member</button>
+    </div>
   </form>
   <br>
 
