@@ -82,6 +82,7 @@ namespace DatingApp.API.Controllers
                 return Unauthorized();
 
             var like = await _repo.GetLike(id, recipientId);
+            
             if (like != null)
                 return BadRequest("You already like this user");
 
