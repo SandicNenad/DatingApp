@@ -20,6 +20,7 @@ export class MemberCardComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   sendLike(id: number) {
+    // tslint:disable-next-line: deprecation
     this.userService.sendLike(this.authService.decodedToken.nameid, id).subscribe(data => {
       this.alertify.success('You have liked: ' + this.user.knownAs);
     }, error => {
