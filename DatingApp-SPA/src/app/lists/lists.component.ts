@@ -19,6 +19,7 @@ export class ListsComponent implements OnInit {
   constructor(private authService: AuthService, private userService: UserService,
     // tslint:disable-next-line: align
     private route: ActivatedRoute, private alertify: AlertifyService) { }
+    // commit for end of the section
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
